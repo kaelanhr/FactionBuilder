@@ -5,11 +5,11 @@ import com.example.demo.repositories.HelloWorldRepository
 import org.springframework.stereotype.Service
 
 @Service
-class HelloWorldServiceImpl(private val helloWorldRepository: HelloWorldRepository) {
-    fun createCity() {
+class HelloWorldServiceImpl(private val helloWorldRepository: HelloWorldRepository): HelloWorldService {
+    override fun createCity() {
         val city = City();
         city.id = 1
-        city.status = "hey"
+        city.status = "hey2"
         city.todoDescription = "enter a description"
         city.todoTargetDate = "i am not sure what goes here"
 
