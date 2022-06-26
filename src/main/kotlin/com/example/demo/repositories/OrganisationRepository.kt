@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface HelloWorldRepository: CrudRepository<City, Long> {
+interface OrganisationRepository: CrudRepository<Organisation, Long> {
 }
