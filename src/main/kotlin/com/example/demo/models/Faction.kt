@@ -1,5 +1,6 @@
 package com.example.demo.models
 
+import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -10,7 +11,7 @@ import javax.persistence.OneToMany
 data class Faction(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id:Int = 0,
+    var id: UUID = UUID.randomUUID(),
 
     var name: String,
 

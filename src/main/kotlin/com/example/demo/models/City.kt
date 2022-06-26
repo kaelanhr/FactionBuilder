@@ -1,5 +1,6 @@
 package com.example.demo.models
 
+import java.util.UUID
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -9,7 +10,7 @@ import javax.persistence.Id
 data class City(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id:Int = 0,
+    var id:UUID = UUID.randomUUID(),
 
     var todoDescription:String,
 
