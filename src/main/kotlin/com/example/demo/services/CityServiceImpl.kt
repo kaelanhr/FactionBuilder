@@ -9,27 +9,27 @@ import java.util.*
 
 @Service
 class CityServiceImpl(
-    private val cityRepository: CityRepository
+	private val cityRepository: CityRepository
 ) : CityService {
 
-    override fun get(): Iterable<City> {
-        return cityRepository.findAll()
-    }
+	override fun get(): Iterable<City> {
+		return cityRepository.findAll()
+	}
 
-    override fun getById(id: UUID): City {
-        return  cityRepository.findByIdOrNull(id) ?: throw EntityNotFoundException("Entity not found.")
-    }
+	override fun getById(id: UUID): City {
+		return cityRepository.findByIdOrNull(id) ?: throw EntityNotFoundException("Entity not found.")
+	}
 
-    override fun create(entity: City): City {
-        return cityRepository.save(entity)
-    }
+	override fun create(entity: City): City {
+		return cityRepository.save(entity)
+	}
 
-    override fun update(entity: City): City {
-        cityRepository.findByIdOrNull(entity.id) ?: throw EntityNotFoundException("Entity to update not found.")
-        return cityRepository.save(entity)
-    }
+	override fun update(entity: City): City {
+		cityRepository.findByIdOrNull(entity.id) ?: throw EntityNotFoundException("Entity to update not found.")
+		return cityRepository.save(entity)
+	}
 
-    override fun delete(id: UUID) {
-        cityRepository.deleteById(id)
-    }
+	override fun delete(id: UUID) {
+		cityRepository.deleteById(id)
+	}
 }

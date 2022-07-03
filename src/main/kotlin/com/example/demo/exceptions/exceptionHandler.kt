@@ -8,30 +8,30 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 
 class ErrorMessageModel(
-    var status: Int? = null,
-    var message: String? = null
+	var status: Int? = null,
+	var message: String? = null
 )
 
 @ControllerAdvice
 class ExceptionControllerAdvice {
 
-    @ExceptionHandler
-    fun handleIllegalStateException(ex: EmptyResultDataAccessException): ResponseEntity<ErrorMessageModel> {
+	@ExceptionHandler
+	fun handleIllegalStateException(ex: EmptyResultDataAccessException): ResponseEntity<ErrorMessageModel> {
 
-        val errorMessage = ErrorMessageModel(
-            HttpStatus.NOT_FOUND.value(),
-            ex.message
-        )
-        return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
-    }
+		val errorMessage = ErrorMessageModel(
+			HttpStatus.NOT_FOUND.value(),
+			ex.message
+		)
+		return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
+	}
 
-    @ExceptionHandler
-    fun handleEntityNotFoundException(ex: EntityNotFoundException): ResponseEntity<ErrorMessageModel> {
+	@ExceptionHandler
+	fun handleEntityNotFoundException(ex: EntityNotFoundException): ResponseEntity<ErrorMessageModel> {
 
-        val errorMessage = ErrorMessageModel(
-            HttpStatus.NOT_FOUND.value(),
-            ex.message
-        )
-        return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
-    }
+		val errorMessage = ErrorMessageModel(
+			HttpStatus.NOT_FOUND.value(),
+			ex.message
+		)
+		return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
+	}
 }

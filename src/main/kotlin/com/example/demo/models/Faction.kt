@@ -9,15 +9,15 @@ import javax.persistence.OneToMany
 
 @Entity
 data class Faction(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: UUID = UUID.randomUUID(),
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	var id: UUID = UUID.randomUUID(),
 
-    var name: String,
+	var name: String,
 
-    var origin: String,
+	var origin: String,
 
-    @OneToMany(mappedBy = "faction")
-    var organisations: Set<Organisation> = emptySet()
+	@OneToMany(mappedBy = "faction")
+	var organisations: Set<Organisation> = emptySet()
 ) {
 }

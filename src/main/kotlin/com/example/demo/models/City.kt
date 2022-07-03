@@ -8,12 +8,12 @@ import javax.persistence.Id
 
 @Entity
 data class City(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    var id:UUID = UUID.randomUUID(),
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	var id: UUID = UUID.randomUUID(),
 
-    var description:String,
+	var description: String,
 
-    var status:String
+	var status: String
 ) {
 }
