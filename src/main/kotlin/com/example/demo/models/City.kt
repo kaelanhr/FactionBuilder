@@ -10,10 +10,10 @@ import javax.persistence.Id
 data class City(
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	var id: UUID = UUID.randomUUID(),
+	override var id: UUID = UUID.randomUUID(),
 
 	var description: String,
 
 	var status: String
-) {
+): AbstractModel() {
 }
