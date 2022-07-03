@@ -24,4 +24,14 @@ class ExceptionControllerAdvice {
         )
         return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
     }
+
+    @ExceptionHandler
+    fun handleEntityNotFoundException(ex: EntityNotFoundException): ResponseEntity<ErrorMessageModel> {
+
+        val errorMessage = ErrorMessageModel(
+            HttpStatus.NOT_FOUND.value(),
+            ex.message
+        )
+        return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
+    }
 }

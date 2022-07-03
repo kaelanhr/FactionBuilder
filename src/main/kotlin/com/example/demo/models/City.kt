@@ -12,11 +12,8 @@ data class City(
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id:UUID = UUID.randomUUID(),
 
-    var todoDescription:String,
-
-    var todoTargetDate:String,
+    var description:String,
 
     var status:String
-
 ) {
 }
