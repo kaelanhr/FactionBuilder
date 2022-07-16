@@ -11,13 +11,13 @@ import javax.persistence.OneToMany
 data class Faction(
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	var id: UUID = UUID.randomUUID(),
+	override var id: UUID = UUID.randomUUID(),
 
-	var name: String,
+	var name: String = "",
 
-	var origin: String,
+	var origin: String = "",
 
 	@OneToMany(mappedBy = "faction")
 	var organisations: Set<Organisation> = emptySet()
-) {
+):  AbstractModel() {
 }
