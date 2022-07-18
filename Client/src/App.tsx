@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
+import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
-
+import { Outlet } from "react-router";
+import { Link } from "react-router-dom";
 interface City {
 	id: String;
 	description: String;
@@ -26,7 +26,7 @@ function App() {
 		});
 	};
 
-	const cities = data?.map(city => {
+	const cities = data?.map((city) => {
 		return (
 			<>
 				<p>ID: {city.id}</p>
@@ -34,26 +34,19 @@ function App() {
 				<p>Status: {city.status}</p>
 			</>
 		);
-
-	})
+	});
 
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				{first}
-
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-			{cities}
-		</div>
+		<>
+			<div className="App">
+				<header className="App-header">
+					<Link to="">Home</Link>
+					<Link to="faction">faction</Link>
+				</header>
+				{cities}
+					<Outlet />
+			</div>
+		</>
 	);
 }
 
