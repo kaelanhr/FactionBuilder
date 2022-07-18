@@ -4,13 +4,19 @@ import {
 	IColumn,
 	SelectionMode,
 } from "@fluentui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export interface IFaction {
 	name: string;
 }
 
+
 export default function Faction() {
+	let navigate = useNavigate();
+
+	const _onRowClick = (row: string): void => {
+		 navigate(row);
+	}
 	const columns: IColumn[] = [
 		{
 			key: "column1",
@@ -19,8 +25,11 @@ export default function Faction() {
 			fieldName: "Name",
 			minWidth: 210,
 			maxWidth: 350,
+
 			onRender: (item: IFaction) => {
-				return <span>{item.name}</span>;
+				return (
+					<span onClick={() => _onRowClick(item.name)}>{item.name}</span>
+				);
 			},
 		},
 	];
