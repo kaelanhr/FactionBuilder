@@ -41,9 +41,8 @@ function App() {
 			<div className="App">
 				<header className="App-header">
 					<Link to="">Home</Link>
-					<Link to="faction">faction</Link>
 				</header>
-				{cities}
+				{cities?.length || <p>No cities found</p>}
 					<Outlet />
 			</div>
 		</>

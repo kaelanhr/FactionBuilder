@@ -11,11 +11,11 @@ export interface IFaction {
 }
 
 
-export default function Faction() {
+export default function FactionList() {
 	let navigate = useNavigate();
 
 	const _onRowClick = (row: string): void => {
-		 navigate(row);
+		 navigate("/faction/view/" + row);
 	}
 	const columns: IColumn[] = [
 		{
