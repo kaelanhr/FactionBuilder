@@ -1,23 +1,30 @@
+import axios from "axios";
+
 export default class Faction implements IFactionAttributes {
 	constructor(attributes?: Partial<IFactionAttributes>) {
 		// super(attributes);
 
-		if(attributes) {
-			if(attributes.name) {
-				this.name = attributes.name
+		if (attributes) {
+			if (attributes.name) {
+				this.name = attributes.name;
 			}
-			if(attributes.origin) {
-				this.origin = attributes.origin
+			if (attributes.origin) {
+				this.origin = attributes.origin;
 			}
 		}
-
 	}
-	name: String;
-	origin: String;
+	name: string;
+	origin: string;
 
+	public create = () => {
+		axios.post("/Api/Faction/", {
+			Name: this.name,
+			Origin: this.origin,
+		});
+	};
 }
 
 export interface IFactionAttributes {
-	name: String,
-	origin: String
+	name: string;
+	origin: string;
 }
