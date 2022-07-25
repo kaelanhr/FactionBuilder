@@ -8,14 +8,16 @@ export default function CreateFaction() {
 
 	const faction = new Faction();
 
-	const submit =  ()  => {
+	const submit =  async ()  => {
 		console.log(faction);
-		faction.create();
+		await faction.create().then(() => {
+			 navigate("/faction");
+		});
 	}
 
 	return (
 		<>
-			<div>CreateFaction</div>
+			<div>Create Faction</div>
 			<TextField model={faction} modelProperty="name" label="Name" />
 			<TextField
 				model={faction}

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 export default class Faction implements IFactionAttributes {
 	constructor(attributes?: Partial<IFactionAttributes>) {
@@ -16,10 +16,10 @@ export default class Faction implements IFactionAttributes {
 	name: string;
 	origin: string;
 
-	public create = () => {
-		axios.post("/Api/Faction/", {
-			Name: this.name,
-			Origin: this.origin,
+	public create = (): Promise<AxiosResponse<Faction>> => {
+		return axios.post("/api/faction/", {
+			name: this.name,
+			origin: this.origin,
 		});
 	};
 }

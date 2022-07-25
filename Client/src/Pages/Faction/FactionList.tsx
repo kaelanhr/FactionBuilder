@@ -4,19 +4,45 @@ import {
 	IColumn,
 	SelectionMode,
 } from "@fluentui/react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Faction from "../../Models/Faction";
 
 export interface IFaction {
 	name: string;
 }
 
-
 export default function FactionList() {
 	let navigate = useNavigate();
+	const [first, setfirst] = useState<any>("loading");
+	const [data, setData] = useState<Faction[] | null>(null);
 
 	const _onRowClick = (row: string): void => {
-		 navigate("/faction/view/" + row);
-	}
+		navigate("/faction/view/" + row);
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	const fetchData = async () => {
+		await axios.get<Faction[]>("/api/faction").then((response) => {
+			if (response.data != null) {
+				setData(response.data);
+				setfirst("Finished");
+			}
+		})
+	};
+
+	const factions = data?.map((faction) => {
+		return (
+			<>
+				<p>Name: {faction.name}</p>
+			</>
+		);
+	});
+
 	const columns: IColumn[] = [
 		{
 			key: "column1",
@@ -28,7 +54,9 @@ export default function FactionList() {
 
 			onRender: (item: IFaction) => {
 				return (
-					<span onClick={() => _onRowClick(item.name)}>{item.name}</span>
+					<>
+						<span onClick={() => _onRowClick(item.name)}>{item.name}</span>
+					</>
 				);
 			},
 		},
@@ -50,6 +78,7 @@ export default function FactionList() {
 		<>
 			<div>Factions</div>
 			<Link to="/faction/create">Create faction</Link>
+			{factions}
 
 			<DetailsList
 				items={items}
